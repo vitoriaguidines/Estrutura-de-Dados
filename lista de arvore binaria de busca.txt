@@ -1,0 +1,32 @@
+typedef struct ab{
+    int info;
+    struct ab *esq, *dir;
+}TABB;
+
+//1-maior elemento da arvore
+TABB* maior(TABB *a) {
+    TABB *aux = a;
+    while(aux->dir != NULL) {
+        aux = aux->dir;
+    }
+    return aux;
+}
+
+//2-menor elemento da arvore
+TABB* menor(TABB *a) {
+    TABB *aux = a
+    while(aux->esq != NULL) {
+        aux = aux->esq;
+    }
+    return aux;
+}
+
+//3-retira os elementos impares da abb
+TABB* retira_impares(TABB* a) {
+    int t;
+    if (a->dir != NULL) {
+        if (a->info % 2 ==0) {
+            
+        }
+    }
+}

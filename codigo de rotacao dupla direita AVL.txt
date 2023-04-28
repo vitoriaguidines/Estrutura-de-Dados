@@ -1,0 +1,23 @@
+pNoA* rotacao_esquerda(pNoA* u) {
+    pNoA *v;
+    v = u->dir;
+    u->dir = v->esq;
+    v->esq = u;
+    v = u;
+    return u;
+}
+
+pNoA* rotacao_direita(pNoA* p) {
+    pNoA *v;
+    v = p->esq;
+    p->esq = v->dir;
+    v->dir = p;
+    v = p;
+    return p;
+}
+
+pNoA* rotacao_dupla_direita(pNoA* p) {
+    rotacao_esquerda(p->esq);
+    rotacao_direita(p);
+    return p;
+}

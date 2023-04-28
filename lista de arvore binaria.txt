@@ -1,0 +1,65 @@
+typedef struct ab{
+   int info;
+   struct ab *esq, *dir;
+}TAB; 
+
+//1-copia uma arvore
+TAB* copia(TAB *a) {
+    if (a == NULL) {
+       return NULL;
+    }
+    TAB *n = malloc(sizeof(TAB));
+    n->info = a->info;
+    n->esq = copia(a->esq);
+    n->dir = copia(a->dir);
+    return n;
+}
+
+//2-espelha uma arvore
+TAB* espelho(TAB *a) {
+    if (a == NULL) {
+        return NULL;
+    }
+    TAB* temp = a->dir;
+    a->dir = espelha(a->esq);
+    a->esq = espelha(temp);
+    return a;
+}
+
+//3-retorna o maior elemento
+TAB* maior(TAB *a) {
+    TAB *info_atual, *maior_info, *info_esq, *info_dir;
+    info_atual = a;
+    maior_info = info_atual;
+    if (a->esq != NULL) {
+       info_esq = maior(a->esq);
+       if (info_esq->info > maior_info->info) {
+           maior_info = info_esq;
+       }
+    }
+    if (a->dir != NULL) {
+       info_dir = maior(a->dir);
+       if (info_dir->info > maior_info->info) {
+           maior_info = info_dir;
+       }
+    }
+    return maior_info;
+}
+
+//4-retorna o menor elemento
+TAB* menor(TAB *a) {
+    TAB *info_atual, *menor_info, *info_esq, *info_dir;
+    info_atual = a;
+    menor_info = info_atual;
+    if (a->esq != NULL) {
+        info_esq = menor(a->esq);
+        if (info_esq->info < menor_info->info) {
+            menor_info = info_esq;
+    if (a->dir != NULL) {
+        info_dir = menor(a->dir);
+        if (info_dir->info < menor_info->info) {
+            menor_info = info_dir;
+        }
+     }
+    return menor_info;
+}
